@@ -4,10 +4,13 @@
 <meta charset="UTF-8">
 <title>Laive Soluções e Tecnologia — Portfólio</title>
 <style>
+  *, *::before, *::after { box-sizing: border-box; }
+
   html, body {
     margin: 0;
     padding: 0;
     width: 100%;
+    min-width: 0;
     background: #081A38;
     overflow-x: hidden;
 }
@@ -36,8 +39,8 @@
   }
  
   .page {
-    width: 210mm;
-    height: 297mm;
+    width: 100%;
+    min-height: 100vh;
     position: relative;
     overflow: hidden;
     page-break-after: always;
