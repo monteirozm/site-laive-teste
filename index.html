@@ -41,8 +41,9 @@
   .page {
     width: 100%;
     min-height: 100vh;
+    height: auto;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     page-break-after: always;
   }
   .page:last-child { page-break-after: auto; }
@@ -165,6 +166,63 @@
      PAGE 2 — CLIENTES EM DESTAQUE
   ================================================================= */
   .page-white { background: var(--white); }
+
+  /* Páginas de conteúdo: deixam a altura crescer com todo o conteúdo.
+     O rodapé não pode ficar sobre os cards quando a janela é baixa. */
+  .page-white {
+    min-height: 100vh;
+    padding-bottom: 34mm;
+  }
+
+  .cards-wrap, .logo-grid {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .simple-row {
+    min-width: 0;
+  }
+
+  .client-card, .client-card.simple {
+    min-width: 0;
+  }
+
+  .client-info {
+    min-width: 0;
+  }
+
+  .footer {
+    max-width: calc(100% - 32mm);
+  }
+
+  /* Em páginas brancas o rodapé entra no fluxo do conteúdo.
+     Assim ele nunca fica por cima dos cards ou do aviso de unidades. */
+  .page-white > .footer-line {
+    position: static;
+    width: auto;
+    margin: 10mm 16mm 0;
+  }
+
+  .page-white > .footer {
+    position: static;
+    margin: 3mm 16mm 10mm;
+    width: auto;
+    max-width: none;
+  }
+
+  @media (max-width: 700px) {
+    .section-header { padding-left: 6vw; padding-right: 6vw; }
+    .cards-wrap, .logo-grid { padding-left: 6vw; padding-right: 6vw; }
+    .client-card { padding: 5vw; }
+    .client-logo-box { width: 34vw; margin-right: 5vw; }
+    .simple-row { flex-direction: column; }
+    .client-card.simple { width: 100%; }
+    .logo-grid { grid-template-columns: 1fr; }
+    .logo-tile[style] { grid-column: auto !important; }
+    .p3-footnote { margin-left: 6vw; margin-right: 6vw; }
+    .page-white > .footer-line { margin-left: 6vw; margin-right: 6vw; }
+    .page-white > .footer { margin-left: 6vw; margin-right: 6vw; }
+  }
  
   .section-header {
     padding: 20mm 16mm 0 16mm;
